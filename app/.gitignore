@@ -1,5 +1,3 @@
 *.pyc
 *.pyo
 .coverage
-vendor/
-!vendor/README.md

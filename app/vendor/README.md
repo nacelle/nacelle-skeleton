@@ -1,1 +1,2 @@
-This directory contains third-party dependencies installed via `pip`.
+This directory contains third-party python packages and will be added to
+`sys.path` at runtime.
