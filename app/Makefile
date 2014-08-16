@@ -1,3 +1,5 @@
+VENV_PREFIX =
+
 help:
 	@echo "clean - remove build artifacts"
 	@echo "deploy - deploy the app to the development environment"
@@ -6,13 +8,13 @@ help:
 
 clean:
 	# remove build artifacts from tree
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -empty -type d -delete
-	-rm .coverage
-	-rm coverage.xml
-	-rm nosetests.xml
+	@find . -name '*.pyc' -exec rm -f {} +
+	@find . -name '*.pyo' -exec rm -f {} +
+	@find . -name '*~' -exec rm -f {} +
+	@find . -empty -type d -delete
+	@-rm .coverage
+	@-rm coverage.xml
+	@-rm nosetests.xml
 
 deploy:
 	# deploy application to the default environment
@@ -28,5 +30,5 @@ run: clean
 		--skip_sdk_update_check
 
 test: clean
-	@# run tests with a coverage report
-	/.venv/bin/python ./run-tests.py
+	# run tests with a coverage report
+	@$(VENV_PREFIX)python ./run-tests.py
