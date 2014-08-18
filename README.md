@@ -35,6 +35,8 @@ Adding your user to the `docker` group will allow to run docker without root
 privileges. Running `sudo gpasswd -a $USER docker` and logging out/in again
 should do the trick.
 
+You can now skip ahead to "Getting the skeleton" below.
+
 ### OSX
 
 Installing and configuring Docker on OSX isn't quite as straightforward as it
@@ -45,7 +47,7 @@ OSX.
 First, install Docker and boot2docker following the instructions on
 [this page][docker_osx_install]. Once you've installed Docker and launched
 `boot2docker` for the first time, you need to stop it again so we can make
-further modifications: `boot2docker stop`.
+further modifications: `$ boot2docker stop`.
 
 Since Docker on OSX is technically running inside a virtual machine and not
 directly on the host OS, any volumes mounted will be on the VM's filesystem
