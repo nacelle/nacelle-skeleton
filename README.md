@@ -1,8 +1,8 @@
 # nacelle-skeleton
 
-![Docker](https://major.io/wp-content/uploads/2014/03/docker-whale.png)
-![Appengine](http://png-2.findicons.com/files/icons/820/simply_google/256/google_appengine.png)
-![Python](http://software.opensuse.org/assets/default-screenshots/python-99cfd25473c412060296e820adeee175.png)
+![Docker](http://www.linux.com/news/galleries/image/docker?format=image&thumbnail=small)
+![Appengine](http://bkarak.wizhut.com/blog/wp-content/uploads/2012/01/app_engine-64.png)
+![Python](http://blog.magiksys.net/sites/default/files/pictures/python-logo-64.png)
 
 This repository provides an opinionated skeleton/template for building Python
 applications on Google Appengine with the [nacelle framework][nacelle].
