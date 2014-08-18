@@ -1,4 +1,18 @@
+# The name of the project is used throughout the makefile to provide
+# project-specific docker containers.
 PROJNAME = nacelle-skeleton
+
+# If running on Linux (and thus using docker directly) we set the user id to
+# that of the current user. If running on Mac (and thus on top of boot2docker)
+# we don't bother since Virtualbox takes care of ensuring any created files
+# have the correct permissions.
+UNAME := $(shell uname)
+ifeq ($(UNAME), Linux)
+	USER_ID = -u $(shell id -u $$USER)
+else ifeq ($(UNAME), Darwin)
+	USER_ID =
+endif
+
 
 help:
 	@echo "build - Build docker container"
@@ -16,4 +30,4 @@ run: storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -p 0.0.0.0:8080:8080 -p 0.0.0.0:8000:8000 appengine/$(PROJNAME) make -C /app run
 
 test: storage
-	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -p 0.0.0.0:8080:8080 -p 0.0.0.0:8000:8000 -u $(shell id -u $$USER) appengine/$(PROJNAME) make -C /app test VENV_PREFIX=/.venv/bin/
+	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -p 0.0.0.0:8080:8080 -p 0.0.0.0:8000:8000 $(USER_ID) appengine/$(PROJNAME) make -C /app test VENV_PREFIX=/.venv/bin/
