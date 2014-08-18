@@ -19,6 +19,66 @@ the Appengine SDK will run (you'll just need to ensure you install the
 application's dependencies manually).
 
 
+## Installing Docker
+***
+
+### Linux
+
+Docker is best supported on Linux, you can probably find packages for your
+preferred distribution [here][docker_install].
+
+**Note:** Please don't run docker as root (or with sudo), it'll cause files
+created within the container to be owned by root on the host system. This will
+prevent you from editing/deleting the files using your regular user account.
+
+Adding your user to the `docker` group will allow to run docker without root
+privileges. Running `sudo gpasswd -a $USER docker` and logging out/in again
+should do the trick.
+
+### OSX
+
+Installing and configuring Docker on OSX isn't quite as straightforward as it
+is on Linux (yet). The [boot2docker][boot2docker] project provides a
+lightweight Linux VM that acts as a (mostly) transparent way to run docker on
+OSX.
+
+First, install Docker and boot2docker following the instructions on
+[this page][docker_osx_install]. Once you've installed Docker and launched
+`boot2docker` for the first time, you need to stop it again so we can make
+further modifications: `boot2docker stop`.
+
+Since Docker on OSX is technically running inside a virtual machine and not
+directly on the host OS, any volumes mounted will be on the VM's filesystem
+and any bound ports will be exposed only to the boot2docker VM. We can work
+around these limitations with a few tweaks to our setup.
+
+In order to mount folders from your host OS into the boot2docker VM you'll
+need to download a version of the boot2docker iso with Virtualbox's Guest
+Additions installed:
+
+    $ mkdir -p ~/.boot2docker
+    $ wget http://static.dockerfiles.io/boot2docker-v1.1.2-virtualbox-guest-additions-v4.3.12.iso -O ~/.boot2docker/boot2docker.iso
+
+Next, you need to tell Virtualbox to mount your `/Users` directory inside the
+VM:
+
+    $ VBoxManage sharedfolder add boot2docker-vm -name home -hostpath /Users
+
+And that should be it. Let’s verify:
+
+    $ boot2docker up
+    $ boot2docker ssh "ls /Users"
+
+You should see a list of all user's home folders from your host OS. Next, we
+need to forward the appropriate ports so that we can reach the running
+appengine development server directly from the host OS:
+
+    $ VBoxManage controlvm boot2docker-vm natpf1 "aesdk,tcp,127.0.0.1,8080,,8080"
+    $ VBoxManage controlvm boot2docker-vm natpf1 "aesdkadmin,tcp,127.0.0.1,8000,,8000"
+
+And you should be ready to go, just follow the rest of the setup guide.
+
+
 ## Getting the skeleton
 ***
 
@@ -42,7 +102,7 @@ to go with it. To install nacelle (with a recent version of `pip`), from the
 root of the repository:
 
     $ pip install nacelle -t app/vendor/
-    
+
 Alternatively, you can download the archive direct from [PyPI][pypi] and unpack
 the module in the `app/vendor/` directory manually.
 
@@ -54,7 +114,7 @@ The easiest way to use this skeleton is with [Docker][docker]. With Docker
 installed, running your application should be as simple as:
 
     $ make run
-    
+
 To run your application's tests, use the command:
 
     $ make test
@@ -104,7 +164,10 @@ added to Python's `sys.path` at runtime.
 See [LICENSE](LICENSE)
 
 
+[boot2docker]: http://boot2docker.io/  "boot2docker"
 [docker]: https://docker.io  "Docker"
+[docker_install]: https://docs.docker.com/installation/  "Docker Installation"
+[docker_osx_install]: https://docs.docker.com/installation/mac/  "Docker Installation OSX"
 [nacelle]: http://github.org/nacelle/nacelle  "nacelle"
 [pipdl]: http://www.pip-installer.org/en/latest/installing.html  "Pip download"
 [pypi]: https://pypi.python.org/pypi/nacelle  "nacelle on PyPI"
