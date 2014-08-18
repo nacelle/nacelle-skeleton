@@ -20,14 +20,17 @@ help:
 	@echo "run - Run development server inside a Docker container"
 	@echo "test - Run application's tests inside a docker container"
 
+bootstrap:
+	bash ops/scripts/get_nacelle.sh
+
 build:
 	docker build -t="appengine/$(PROJNAME)" .
 
 storage: build
 	-docker run -t -i --name $(PROJNAME) appengine/$(PROJNAME) echo "Storage-only container."
 
-run: storage
+run: bootstrap storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -p 0.0.0.0:8080:8080 -p 0.0.0.0:8000:8000 appengine/$(PROJNAME) make -C /app run
 
-test: storage
+test: bootstrap storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -p 0.0.0.0:8080:8080 -p 0.0.0.0:8000:8000 $(USER_ID) appengine/$(PROJNAME) make -C /app test VENV_PREFIX=/.venv/bin/

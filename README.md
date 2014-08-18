@@ -99,9 +99,13 @@ Or without `git`:
 ## Getting a recent copy of nacelle
 ***
 
-Once you've downloaded the skeleton code, you'll need a recent copy of nacelle
-to go with it. To install nacelle (with a recent version of `pip`), from the
-root of the repository:
+If you're using docker, the latest available version of nacelle will be
+downloaded from PyPI on first run (a script checks if the
+`app/vendor/nacelle/` directory exists). You can skip straight to "Using the
+skeleton with Docker"
+
+If not using Docker you'll need to install nacelle yourself. With a recent
+version of `pip`, from the root of the repository, run:
 
     $ pip install nacelle -t app/vendor/
 
