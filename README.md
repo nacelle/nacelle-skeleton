@@ -107,5 +107,6 @@ See [LICENSE](LICENSE)
 [docker]: https://docker.io  "Docker"
 [nacelle]: http://github.org/nacelle/nacelle  "nacelle"
 [pipdl]: http://www.pip-installer.org/en/latest/installing.html  "Pip download"
+[pypi]: https://pypi.python.org/pypi/nacelle  "nacelle on PyPI"
 [sdkdl]: https://developers.google.com/appengine/downloads  "Appengine SDK"
 [thrdprty]: https://developers.google.com/appengine/docs/python/tools/libraries27  "Appengine third-party libraries"
