@@ -35,7 +35,7 @@ Adding your user to the `docker` group will allow to run docker without root
 privileges. Running `sudo gpasswd -a $USER docker` and logging out/in again
 should do the trick.
 
-You can now skip ahead to "Getting the skeleton" below.
+You can now skip ahead to **"Getting the skeleton"** below.
 
 ### OSX
 
