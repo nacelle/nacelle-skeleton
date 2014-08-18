@@ -1,5 +1,9 @@
 # nacelle-skeleton
 
+![Docker](https://major.io/wp-content/uploads/2014/03/docker-whale.png)
+![Appengine](http://png-2.findicons.com/files/icons/820/simply_google/256/google_appengine.png)
+![Python](http://software.opensuse.org/assets/default-screenshots/python-99cfd25473c412060296e820adeee175.png)
+
 This repository provides an opinionated skeleton/template for building Python
 applications on Google Appengine with the [nacelle framework][nacelle].
 
@@ -79,6 +83,13 @@ appengine development server directly from the host OS:
     $ VBoxManage controlvm boot2docker-vm natpf1 "aesdkadmin,tcp,127.0.0.1,8000,,8000"
 
 And you should be ready to go, just follow the rest of the setup guide.
+
+### Windows
+
+![Tumbleweed](http://media.giphy.com/media/5x89XRx3sBZFC/giphy.gif)
+
+No support yet (although it probably wouldn't take much). Pull requests very
+welcome.
 
 
 ## Getting the skeleton
