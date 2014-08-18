@@ -101,8 +101,8 @@ Or without `git`:
 
 If you're using docker, the latest available version of nacelle will be
 downloaded from PyPI on first run (a script checks if the
-`app/vendor/nacelle/` directory exists). You can skip straight to "Using the
-skeleton with Docker"
+`app/vendor/nacelle/` directory exists). You can skip straight to **"Using the
+skeleton with Docker"**.
 
 If not using Docker you'll need to install nacelle yourself. With a recent
 version of `pip`, from the root of the repository, run:
