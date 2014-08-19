@@ -10,7 +10,7 @@ fi
 base_url="https://pypi.python.org/pypi/nacelle/json"
 url=$(curl -s $base_url | python -c 'import sys, json; print json.load(sys.stdin)["urls"][0]["url"]')
 filename=$(curl -s $base_url | python -c 'import sys, json; print json.load(sys.stdin)["urls"][0]["filename"]')
-foldername=$(echo $filename | sed -r 's/\.[[:alnum:]]+\.[[:alnum:]]+$//')
+foldername=$(echo $filename | python -c 'import sys; print sys.stdin.read().replace(".tar.gz", "")')
 
 mkdir -p ~/.nacelle
 wget $url -O ~/.nacelle/$filename
