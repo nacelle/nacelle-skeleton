@@ -1,0 +1,8 @@
+# Python requirements for running the app's tests
+#
+# These are not needed at runtime so are only installed in a virtual
+# environment (instead of being embedded in the app).
+
+coverage==3.7.1
+nose==1.3.3
+yanc==0.2.4
