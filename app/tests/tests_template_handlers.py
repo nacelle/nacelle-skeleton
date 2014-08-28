@@ -1,4 +1,4 @@
-"""Tests for personal-shopping frontend template handlers
+"""Tests for nacelle-skeleton frontend template handlers
 """
 # third-party imports
 import webapp2
