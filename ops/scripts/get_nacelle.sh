@@ -16,4 +16,4 @@ mkdir -p ~/.nacelle
 curl $url -o ~/.nacelle/$filename
 
 tar -C ~/.nacelle/ -zxf ~/.nacelle/$filename
-cp -R ~/.nacelle/$foldername/nacelle `pwd`/app/vendor/
+cp -R ~/.nacelle/$foldername/nacelle "`pwd`/app/vendor/"
