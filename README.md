@@ -63,7 +63,7 @@ need to download a version of the boot2docker iso with Virtualbox's Guest
 Additions installed:
 
     $ mkdir -p ~/.boot2docker
-    $ wget http://static.dockerfiles.io/boot2docker-v1.1.2-virtualbox-guest-additions-v4.3.12.iso -O ~/.boot2docker/boot2docker.iso
+    $ curl http://static.dockerfiles.io/boot2docker-v1.2.0-virtualbox-guest-additions-v4.3.14.iso -o ~/.boot2docker/boot2docker.iso
 
 Next, you need to tell Virtualbox to mount your `/Users` directory inside the
 VM:

@@ -13,7 +13,7 @@ filename=$(curl -s $base_url | python -c 'import sys, json; print json.load(sys.
 foldername=$(echo $filename | python -c 'import sys; print sys.stdin.read().replace(".tar.gz", "")')
 
 mkdir -p ~/.nacelle
-wget $url -O ~/.nacelle/$filename
+curl $url -o ~/.nacelle/$filename
 
 tar -C ~/.nacelle/ -zxf ~/.nacelle/$filename
-cp -R ~/.nacelle/$foldername/nacelle `pwd`/app/vendor/
+cp -R ~/.nacelle/$foldername/nacelle "`pwd`/app/vendor/"
